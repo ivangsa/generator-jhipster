@@ -20,6 +20,7 @@
 const { Lexer } = require('chevrotain');
 const {
   NAME,
+  TYPE,
   sharedCategoryTokens: { UNARY_OPTION, BINARY_OPTION },
 } = require('./shared-tokens');
 const ValidationTokens = require('./validation-tokens');
@@ -146,6 +147,7 @@ createTokenFromConfig({ name: 'AT', pattern: '@' });
 
 tokens.UNARY_OPTION = UNARY_OPTION;
 tokens.BINARY_OPTION = BINARY_OPTION;
+// tokens.TYPE = TYPE;
 // Imperative the "NAME" token will be added after all the keywords to resolve keywords vs identifier conflict.
 tokens.NAME = NAME;
 

@@ -294,7 +294,7 @@ function prepareFieldForTemplates(entityWithConfig, field, generator) {
     }
   }
 
-  field.fieldIsEnum = !field.id && fieldIsEnum(fieldType);
+  field.fieldIsEnum = !field.id && fieldIsEnum(field);
   field.fieldWithContentType = (fieldType === BYTES || fieldType === BYTE_BUFFER) && field.fieldTypeBlobContent !== TEXT;
   if (field.fieldWithContentType) {
     field.contentTypeFieldName = `${field.fieldName}ContentType`;
@@ -413,24 +413,27 @@ function prepareFieldForTemplates(entityWithConfig, field, generator) {
   return field;
 }
 
-function fieldIsEnum(fieldType) {
-  return ![
-    STRING,
-    INTEGER,
-    LONG,
-    FLOAT,
-    DOUBLE,
-    BIG_DECIMAL,
-    LOCAL_DATE,
-    INSTANT,
-    ZONED_DATE_TIME,
-    DURATION,
-    UUID,
-    BOOLEAN,
-    BYTES,
-    BYTE_BUFFER,
-  ].includes(fieldType);
+function fieldIsEnum(field) {
+  return field.isEnum === true;
 }
+// function fieldIsEnum(fieldType) {
+//   return ![
+//     STRING,
+//     INTEGER,
+//     LONG,
+//     FLOAT,
+//     DOUBLE,
+//     BIG_DECIMAL,
+//     LOCAL_DATE,
+//     INSTANT,
+//     ZONED_DATE_TIME,
+//     DURATION,
+//     UUID,
+//     BOOLEAN,
+//     BYTES,
+//     BYTE_BUFFER,
+//   ].includes(fieldType);
+// }
 
 /**
  * From an enum's values (with or without custom values), returns the enum's values without custom values.
@@ -439,7 +442,8 @@ function fieldIsEnum(fieldType) {
  */
 function getEnumValuesWithCustomValues(enumValues) {
   if (!enumValues || enumValues === '') {
-    throw new Error('Enumeration values must be passed to get the formatted values.');
+    // throw new Error('Enumeration values must be passed to get the formatted values.');
+    return [];
   }
   return enumValues.split(',').map(enumValue => {
     if (!enumValue.includes('(')) {

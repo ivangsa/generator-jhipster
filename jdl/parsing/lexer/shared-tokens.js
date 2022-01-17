@@ -18,10 +18,14 @@
  */
 const { Lexer, createToken } = require('chevrotain');
 
-const namePattern = /[a-zA-Z_][a-zA-Z_\-\d]*/;
+const namePattern = /[a-zA-Z_][a-zA-Z_\-\d.<>]*/;
 const nameTokenConfig = { name: 'NAME', pattern: namePattern };
-
 const nameToken = createToken(nameTokenConfig);
+
+const typePattern = /[a-zA-Z_][a-zA-Z_\-\d.<>]*/;
+const typeTokenConfig = { name: 'NAME', pattern: typePattern };
+const typeToken = createToken(typeTokenConfig);
+
 const keywordTokenConfig = {
   name: 'KEYWORD',
   pattern: Lexer.NA,
@@ -35,6 +39,7 @@ const binaryOptionCategoryToken = createToken({ name: 'BINARY_OPTION', pattern: 
 
 module.exports = {
   NAME: nameToken,
+  TYPE: typeToken,
   KEYWORD: keywordToken,
   namePattern,
   sharedCategoryTokens: {

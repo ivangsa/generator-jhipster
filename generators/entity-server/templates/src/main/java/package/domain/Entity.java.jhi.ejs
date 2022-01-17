@@ -111,7 +111,7 @@ public class <%= persistClass %> implements Serializable {
     @Schema(description = "<%- formatAsApiDescription(field.javadoc) %>"<% if (field.fieldValidationRequired) { %>, required = true<% } %>)
   <%_ } _%>
 <&- fragments.field<%- field.fieldNameCapitalized %>AnnotationSection() -&>
-    private <%= field.javaFieldType %> <%= field.fieldName %>;
+    private <%- field.javaFieldType %> <%= field.fieldName %>;
 
   <%_ if (field.fieldWithContentType) { _%>
 <&- fragments.field<%- field.fieldNameCapitalized %>ContentTypeAnnotationSection() -&>
@@ -170,12 +170,12 @@ for (relationship of relationships.filter(relationship => !relationship.embedded
     // jhipster-needle-entity-add-field - JHipster will add fields here
 <%_ for (const field of fields.filter(field => !field.transient && (embedded || !field.id || !primaryKey.composite))) { _%>
 
-    public <%= field.javaFieldType %> get<%= field.fieldInJavaBeanMethod %>() {
+    public <%- field.javaFieldType %> get<%= field.fieldInJavaBeanMethod %>() {
         return this.<%= field.fieldName %>;
     }
   <%_ if (fluentMethods) { _%>
 
-    public <%= persistClass %> <%= field.fieldName %>(<%= field.javaFieldType %> <%= field.fieldName %>) {
+    public <%= persistClass %> <%= field.fieldName %>(<%- field.javaFieldType %> <%= field.fieldName %>) {
         this.set<%= field.fieldInJavaBeanMethod %>(<%= field.fieldName %>);
         return this;
     }
@@ -183,7 +183,7 @@ for (relationship of relationships.filter(relationship => !relationship.embedded
 
 <&- fragments.field<%- field.fieldNameCapitalized %>CustomSetSection() -&>
 <&_ if (!fragments.field<%- field.fieldNameCapitalized %>CustomSetSection()) { -&>
-    public void set<%= field.fieldInJavaBeanMethod %>(<%= field.javaFieldType %> <%= field.fieldName %>) {
+    public void set<%= field.fieldInJavaBeanMethod %>(<%- field.javaFieldType %> <%= field.fieldName %>) {
         this.<%= field.fieldName %> = <%= field.fieldName %>;
     }
 <&_ } -&>

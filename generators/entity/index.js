@@ -743,7 +743,7 @@ class EntityGenerator extends BaseBlueprintGenerator {
             entity.haveFieldWithJavadoc = true;
           }
 
-          if (fieldIsEnum(fieldType)) {
+          if (fieldIsEnum(field)) {
             entity.i18nToLoad.push(field.enumInstance);
           }
 

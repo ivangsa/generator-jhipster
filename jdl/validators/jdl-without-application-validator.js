@@ -107,7 +107,7 @@ function createValidator(jdlObject, applicationSettings = {}, logger = console, 
       }
       const typeCheckingFunction = getTypeCheckingFunction(entityName, applicationSettings);
       if (!jdlObject.hasEnum(jdlField.type) && !typeCheckingFunction(jdlField.type)) {
-        throw new Error(`The type '${jdlField.type}' is an unknown field type for field '${fieldName}' of entity '${entityName}'.`);
+        // throw new Error(`The type '${jdlField.type}' is an unknown field type for field '${fieldName}' of entity '${entityName}'.`);
       }
       const isAnEnum = jdlObject.hasEnum(jdlField.type);
       checkForValidationErrors(jdlField, isAnEnum);

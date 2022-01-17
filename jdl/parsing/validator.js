@@ -26,13 +26,13 @@ const checkConfigKeys = require('./self-checks/parsing-system-checker').checkCon
 
 const CONSTANT_PATTERN = /^[A-Z_]+$/;
 const ENTITY_NAME_PATTERN = /^[A-Z][A-Za-z0-9]*$/;
-const TYPE_NAME_PATTERN = /^[A-Z][A-Za-z0-9]*$/;
+const TYPE_NAME_PATTERN = /^[A-Za-z0-9.<>]*$/;
 const ENUM_NAME_PATTERN = /^[A-Z][A-Za-z0-9]*$/;
 const ENUM_PROP_NAME_PATTERN = /^[A-Z][A-Za-z0-9_]*$/;
 const ENUM_PROP_VALUE_PATTERN = /^[A-Za-z][A-Za-z0-9_]*$/;
 const METHOD_NAME_PATTERN = /^[A-Za-z][A-Za-z0-9-_]*$/;
 const JHI_PREFIX_NAME_PATTERN = /^[A-Za-z][A-Za-z0-9-_]*$/;
-const PACKAGE_NAME_PATTERN = /^[a-z_][a-z0-9_]*$/;
+const PACKAGE_NAME_PATTERN = /^[a-z_][a-z0-9_.]*$/;
 const ALPHABETIC = /^[A-Za-z]+$/;
 const ALPHABETIC_LOWER = /^[a-z]+$/;
 const ALPHANUMERIC = /^[A-Za-z][A-Za-z0-9]*$/;

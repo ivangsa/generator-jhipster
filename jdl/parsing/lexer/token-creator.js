@@ -19,7 +19,7 @@
 
 const { isString } = require('lodash');
 const { createToken } = require('chevrotain');
-const { NAME, KEYWORD, namePattern } = require('./shared-tokens');
+const { NAME, TYPE, KEYWORD, namePattern } = require('./shared-tokens');
 
 module.exports = {
   createTokenFromConfig,
